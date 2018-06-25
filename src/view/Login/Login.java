@@ -37,13 +37,13 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblLogin = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        campoLogin = new javax.swing.JTextField();
-        campoSenha = new javax.swing.JPasswordField();
-        botaoEntrar = new javax.swing.JButton();
-        botaoNovoUser = new javax.swing.JButton();
+        loginField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
+        newUserButton = new javax.swing.JButton();
         forgPassButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,35 +53,35 @@ public class Login extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
-        jLabel1.setText("Login:");
+        lblLogin.setText("Login:");
 
-        jLabel2.setText("Senha:");
+        lblPassword.setText("Senha:");
 
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
 
-        campoLogin.addActionListener(new java.awt.event.ActionListener() {
+        loginField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoLoginActionPerformed(evt);
+                loginFieldActionPerformed(evt);
             }
         });
 
-        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoSenhaActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
             }
         });
 
-        botaoEntrar.setText("Entrar");
-        botaoEntrar.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Entrar");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoEntrarActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
-        botaoNovoUser.setText("Criar novo usuário");
-        botaoNovoUser.addActionListener(new java.awt.event.ActionListener() {
+        newUserButton.setText("Criar novo usuário");
+        newUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoNovoUserActionPerformed(evt);
+                newUserButtonActionPerformed(evt);
             }
         });
 
@@ -97,80 +97,83 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(forgPassButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoNovoUser))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(campoSenha)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(botaoEntrar))
-                        .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(forgPassButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(newUserButton))
+                            .addComponent(lblPassword)
+                            .addComponent(lblLogin)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(passwordField)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(loginButton))
+                                .addComponent(loginField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 4, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel3)
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(lblLogin)
                 .addGap(9, 9, 9)
-                .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jLabel2)
+                .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoEntrar))
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginButton))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(forgPassButton)
-                    .addComponent(botaoNovoUser))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(newUserButton))
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLoginActionPerformed
+    private void loginFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoLoginActionPerformed
+    }//GEN-LAST:event_loginFieldActionPerformed
 
-    private void botaoNovoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoUserActionPerformed
+    private void newUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserButtonActionPerformed
         // TODO add your handling code here:
         App.showNewUserView();
-    }//GEN-LAST:event_botaoNovoUserActionPerformed
+    }//GEN-LAST:event_newUserButtonActionPerformed
 
-    private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        if(App.getNetwork().login(campoLogin.getText(), new String(campoSenha.getPassword()))){
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        if(App.getNetwork().login(loginField.getText(), new String(passwordField.getPassword()))){
             App.showMainView();
             this.dispose();
         } else {
             jLabel3.setText("Usuário ou Senha incorretos");
         }
         
-    }//GEN-LAST:event_botaoEntrarActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     private void forgPassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgPassButtonActionPerformed
         App.showForgotenPasswordView();
     }//GEN-LAST:event_forgPassButtonActionPerformed
     
-    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
-        if(App.getNetwork().login(campoLogin.getText(), new String(campoSenha.getPassword()))){
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        if(App.getNetwork().login(loginField.getText(), new String(passwordField.getPassword()))){
             App.showMainView();
             this.dispose();
         } else {
             jLabel3.setText("Usuário ou Senha incorretos");
         }
-    }//GEN-LAST:event_campoSenhaActionPerformed
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,13 +188,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoEntrar;
-    private javax.swing.JButton botaoNovoUser;
-    private javax.swing.JTextField campoLogin;
-    private javax.swing.JPasswordField campoSenha;
     private javax.swing.JButton forgPassButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblLogin;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JTextField loginField;
+    private javax.swing.JButton newUserButton;
+    private javax.swing.JPasswordField passwordField;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,23 +8,35 @@
 package view.About;
 
 import control.App;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.User;
 
 /**
  *
  * @author Usuario
  */
-public class AboutEdit extends javax.swing.JFrame {
 
+
+public class AboutEdit extends javax.swing.JFrame {
+    
+    private final User user;
     /**
      * Creates new form ProfileView1
      */
     public AboutEdit() {
+        user = App.getNetwork().getCurrentUser();
         initComponents();
-        nameField.setText(App.getNetwork().getCurrentUser().getName());
-        dateFField.setText(App.getNetwork().getCurrentUser().getDobString());
-        addressField.setText(App.getNetwork().getCurrentUser().getAddress());
-        phoneFField.setText(App.getNetwork().getCurrentUser().getPhone());
-        aboutAreaField.setText(App.getNetwork().getCurrentUser().getBio());
+        nameField.setText(user.getName());
+        dateFField.setText(user.getDobString());
+        addressField.setText(user.getAddress());
+        phoneFField.setText(user.getPhone());
+        aboutAreaField.setText(user.getBio());
         
         
         
@@ -92,6 +104,11 @@ public class AboutEdit extends javax.swing.JFrame {
         }
 
         saveChangesButton.setText("Salvar alterações");
+        saveChangesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveChangesButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,6 +214,27 @@ public class AboutEdit extends javax.swing.JFrame {
     private void dateFFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dateFFieldActionPerformed
+
+    private void saveChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesButtonActionPerformed
+        // TODO add your handling code here:
+        
+        user.setName(nameField.getText());
+        
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        Date dob = new Date();
+        try {
+            dob = df.parse(dateFField.getText());
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Falha na data!" + ex);
+        } 
+        user.setDob(dob);
+        user.setName(nameField.getText());
+        user.setName(nameField.getText());
+        user.setAddress(addressField.getText());
+        user.setPhone(phoneFField.getText());
+        user.setBio(aboutAreaField.getText());
+        this.dispose();
+    }//GEN-LAST:event_saveChangesButtonActionPerformed
 
     /**
      * @param args the command line arguments
