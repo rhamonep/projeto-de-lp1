@@ -17,6 +17,7 @@ public class User implements Serializable {
         private List<ImageIcon> pictures;
 	private Date dob;  
         private List<Post> feed;
+        private List<User> groups;
 	private List<User> friends;
 	private List<User> friendRequests;	
 	
@@ -128,4 +129,14 @@ public class User implements Serializable {
 	public void addFriendRequest(User friendRequest) {
 		this.friendRequests.add(friendRequest);
 	}
+
+        public List<User> getGroups() {
+            return groups;
+        }
+
+        public void setGroups(List<User> groups) {
+            this.groups = groups;
+        }
+
+        
 }
