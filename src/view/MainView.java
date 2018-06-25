@@ -224,6 +224,7 @@ public class MainView extends javax.swing.JFrame {
         if(App.getNetwork().getCurrentUser().getFriends().size()==0){
             showNotFound();
         } 
+        else
         showFriends(App.getNetwork().getCurrentUser().getFriends());
     }//GEN-LAST:event_friendsActionPerformed
 
@@ -257,6 +258,7 @@ public class MainView extends javax.swing.JFrame {
         if(App.getNetwork().getCurrentUser().getGroups().size()==0){
             showNotFound();
         }
+        else
         showGroups(App.getNetwork().getCurrentUser().getGroups());
     }//GEN-LAST:event_groupsActionPerformed
 
@@ -264,13 +266,15 @@ public class MainView extends javax.swing.JFrame {
        if(App.getNetwork().getCurrentUser().getFriendRequests().size()==0){
             showNotFound();
         }
-        showFriendsRequests(App.getNetwork().getCurrentUser().getFriendRequests());
+        else
+       showFriendsRequests(App.getNetwork().getCurrentUser().getFriendRequests());
     }//GEN-LAST:event_solicitationsActionPerformed
 
     private void blockedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockedActionPerformed
         if(App.getNetwork().getCurrentUser().getBlacklist().size()==0){
             showNotFound();
         }
+        else
         showBlocked(App.getNetwork().getCurrentUser().getBlacklist());
     }//GEN-LAST:event_blockedActionPerformed
 
