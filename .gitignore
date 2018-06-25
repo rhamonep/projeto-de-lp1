@@ -17,3 +17,5 @@ bd.ser
 *.ser
 *.properties
 *.ser
+*.class
+*.class

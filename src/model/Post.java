@@ -12,15 +12,15 @@ import java.util.List;
 import javax.swing.ImageIcon;
 
 public class Post extends DataModel implements Serializable {
-    private List<ImageIcon> pictures;
+    private ImageIcon picture;
     private List<Comment> comments;
     private boolean visibility;
 
-    public Post(String userName, String text, Date datePosted, List<ImageIcon> pictures) {
+    public Post(String userName, String text, Date datePosted, ImageIcon picture) {
         this.userName = userName;
         this.text = text;
         this.datePosted = datePosted;
-        this.pictures = pictures;
+        this.picture = picture;
         comments = new ArrayList();
         visibility = true;
     }
@@ -29,7 +29,7 @@ public class Post extends DataModel implements Serializable {
         this.userName = userName;
         this.text = text;
         this.datePosted = datePosted;
-        this.pictures = null;
+        this.picture = null;
         comments = new ArrayList();
         visibility = true;
     }
@@ -42,12 +42,12 @@ public class Post extends DataModel implements Serializable {
         this.comments.add(comment);
     }
 
-    public List<ImageIcon> getPictures() {
-        return pictures;
+    public ImageIcon getPicture() {
+        return picture;
     }
 
-    public void addPicture(ImageIcon newPicture) {
-        this.pictures.add(newPicture);
+    public void setPicture(ImageIcon Picture) {
+        this.picture = Picture;
     }
 
     public boolean isPublic() {
