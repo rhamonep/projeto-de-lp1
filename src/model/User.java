@@ -153,7 +153,7 @@ public class User implements Serializable {
         return blacklist;
     }
 
-    public void setBlacklist(List<User> blacklist) {
-        this.blacklist = blacklist;
+    public void addToBlacklist(User user) {
+        this.blacklist.add(user);
     }        
 }
