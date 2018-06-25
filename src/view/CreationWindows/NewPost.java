@@ -22,8 +22,9 @@ import view.Photos.PhotosView;
 public class NewPost extends javax.swing.JFrame {
 
     private ImageIcon image;
-    private PhotosView p1;
-    
+            Post p1;
+            PhotosView pView;
+            
     public NewPost() {
         initComponents();
         GridBagLayout layout = new GridBagLayout();
@@ -45,7 +46,8 @@ public class NewPost extends javax.swing.JFrame {
         post = new javax.swing.JButton();
         panelP = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        text = new javax.swing.JTextPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        text = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -77,56 +79,54 @@ public class NewPost extends javax.swing.JFrame {
 
         jLabel1.setText("Fotos adicionadas:");
 
-        text.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                textComponentResized(evt);
-            }
-        });
+        text.setColumns(20);
+        text.setRows(5);
+        jScrollPane1.setViewportView(text);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(addPhoto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(post)))
-                .addGap(2, 2, 2))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                .addComponent(addPhoto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(post)))))
+                .addGap(4, 4, 4))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
                     .addComponent(addPhoto)
                     .addComponent(post))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        text.getAccessibleContext().setAccessibleName("");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void postActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postActionPerformed
-        Post p1 = new Post();
-        p1.setDescription(text.getText());
+       
+        p1 = new Post();
+        p1.setDescription(text.getText());   
+        App.getNetwork().getCurrentUser().getFeed().add(p1);
         
+        dispose();
   
     }//GEN-LAST:event_postActionPerformed
 
@@ -141,7 +141,7 @@ public class NewPost extends javax.swing.JFrame {
         this.image = new ImageIcon(photo.getSelectedFile().getPath());	   
         
         GridBagConstraints c = new GridBagConstraints();
-        p1 = new PhotosView(image);
+        pView = new PhotosView(image);
         Post p = new Post();
         p.addPicture(image);
         
@@ -149,7 +149,7 @@ public class NewPost extends javax.swing.JFrame {
         c.insets = new Insets(0, 0, 10, 0);
         c.gridx = 0;
         c.gridy = 0;
-        panelP.add(p1, c);
+        panelP.add(pView, c);
         panelP.setVisible(false);
         panelP.setVisible(true);
         
@@ -158,10 +158,6 @@ public class NewPost extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_addPhotoActionPerformed
-
-    private void textComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_textComponentResized
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textComponentResized
 
     /**
      * @param args the command line arguments
@@ -201,8 +197,9 @@ public class NewPost extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPhoto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelP;
     private javax.swing.JButton post;
-    private javax.swing.JTextPane text;
+    private javax.swing.JTextArea text;
     // End of variables declaration//GEN-END:variables
 }
