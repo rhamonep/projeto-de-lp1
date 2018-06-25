@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//sou foda na cama te ixkulacho
 package view.About;
 
 import control.App;
