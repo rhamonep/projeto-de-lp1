@@ -20,9 +20,9 @@ public class PhotosView extends javax.swing.JPanel {
      */
     public PhotosView(ImageIcon image) {
          initComponents();
-        photoP.setIcon(new ImageIcon(image.getImage().getScaledInstance(photoP.getWidth(), photoP.getHeight(), Image.SCALE_DEFAULT)));
-
-        
+         labelPhoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(labelPhoto.getWidth(), labelPhoto.getHeight(), Image.SCALE_DEFAULT)));
+         labelPhoto.setVisible(false);
+         labelPhoto.setVisible(true);
     }
   
     /**
@@ -34,18 +34,18 @@ public class PhotosView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        photoP = new javax.swing.JLabel();
+        labelPhoto = new javax.swing.JLabel();
         Photos = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(153, 255, 102));
 
-        photoP.setText("Imagem");
+        labelPhoto.setText("Imagem");
 
         javax.swing.GroupLayout PhotosLayout = new javax.swing.GroupLayout(Photos);
         Photos.setLayout(PhotosLayout);
         PhotosLayout.setHorizontalGroup(
             PhotosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         PhotosLayout.setVerticalGroup(
             PhotosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,21 +57,23 @@ public class PhotosView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Photos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(photoP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(photoP, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Photos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Photos;
-    private javax.swing.JLabel photoP;
+    private javax.swing.JLabel labelPhoto;
     // End of variables declaration//GEN-END:variables
 }

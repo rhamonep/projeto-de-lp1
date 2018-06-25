@@ -21,15 +21,17 @@ public class FeedView extends javax.swing.JPanel {
 
     
     private PostView p1;
+    private User user;
     
     public FeedView() {
         GridBagLayout layout = new GridBagLayout(); 
         initComponents();
+        this.user = App.getNetwork().getCurrentUser();
         postP.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         
         int i = 0;
-        for(Post post:App.getNetwork().getCurrentUser().getFeed()){
+        for(Post post: this.user.getFeed()){
             p1 = new PostView(App.getNetwork().getCurrentUser(), post);
             c.insets = new Insets(0, 0, 10, 10);
             c.gridx = 0;
@@ -40,6 +42,8 @@ public class FeedView extends javax.swing.JPanel {
     }
     public FeedView(User user) {
         initComponents();
+        this.user = user;
+        
         GridBagLayout layout = new GridBagLayout(); 
         postP.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
@@ -110,7 +114,12 @@ public class FeedView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPostActionPerformed
-        App.ShowNewPost();
+        if(this.user == App.getNetwork().getCurrentUser()){
+            App.showNewPost();
+        }else{
+            App.showNewPost(user);
+        }
+        
     }//GEN-LAST:event_newPostActionPerformed
 
 

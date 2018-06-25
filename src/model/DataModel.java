@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class DataModel{
+public abstract class DataModel implements Serializable{
     protected String userName;
     protected String text;
     protected Date datePosted;

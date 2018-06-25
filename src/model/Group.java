@@ -52,6 +52,14 @@ public class Group implements Serializable{
 	public void addMemberRequest(User memberRequest) {
 		this.memberRequests.add(memberRequest);
 	}
+        
+        public boolean isInMemberRequest(User user){
+            return this.memberRequests.contains(user);
+        }
+        
+        public boolean isMember(User user){
+            return this.members.contains(user);
+        }
 	
 	public ImageIcon getProfilePicture() {
 		return profilePicture;

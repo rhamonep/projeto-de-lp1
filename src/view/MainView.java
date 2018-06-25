@@ -234,7 +234,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_homeActionPerformed
 
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
-        App.ShowAboutEdit();
+        App.showAboutEdit();
     }//GEN-LAST:event_ProfileActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed

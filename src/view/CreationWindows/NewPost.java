@@ -29,6 +29,7 @@ public class NewPost extends javax.swing.JFrame {
 
     private ImageIcon image;
     private User user;
+    private PhotosView photoView;
             
     public NewPost() {
         initComponents();
@@ -41,6 +42,8 @@ public class NewPost extends javax.swing.JFrame {
     
     public NewPost(User user) {
         initComponents();
+        this.user = user;
+        
         GridBagLayout layout = new GridBagLayout();
         panelP.setLayout(layout);
     }
@@ -87,7 +90,7 @@ public class NewPost extends javax.swing.JFrame {
         );
         panelPLayout.setVerticalGroup(
             panelPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         jLabel1.setText("Fotos adicionadas:");
@@ -125,8 +128,8 @@ public class NewPost extends javax.swing.JFrame {
                     .addComponent(addPhotoButton)
                     .addComponent(publishButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -136,37 +139,40 @@ public class NewPost extends javax.swing.JFrame {
     private void publishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publishButtonActionPerformed
         Date datePosted = new Date();
         
-        Post p1 = new Post(this.user.getName(), this.text.getText(), datePosted); 
+        Post p1 = new Post(App.getNetwork().getCurrentUser().getName(), this.text.getText(), datePosted); 
         this.user.addPost(p1);
+        
+        if(user == App.getNetwork().getCurrentUser()){
+            App.showFeed();
+        }else{
+            App.showProfile(this.user);
+        }
+        
         this.dispose();
+        
     }//GEN-LAST:event_publishButtonActionPerformed
 
     private void addPhotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPhotoButtonActionPerformed
-        /*
+   
         JFileChooser photo = new JFileChooser();
         photo.setDialogTitle("Selecione uma foto");
         photo.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         int opc = photo.showOpenDialog(this);
         if(opc == JFileChooser.APPROVE_OPTION){
-            this.image = new ImageIcon(photo.getSelectedFile().getPath());	   
+        image = new ImageIcon(photo.getSelectedFile().getPath());
+    } 	   
 
             GridBagConstraints c = new GridBagConstraints();
-            pView = new PhotosView(image);
-            Post p = new Post();
-            p.addPicture(image);
-
-
+            photoView = new PhotosView(image);
             c.insets = new Insets(0, 0, 10, 0);
             c.gridx = 0;
             c.gridy = 0;
-            panelP.add(pView, c);
+            panelP.add(photoView, c);
             panelP.setVisible(false);
             panelP.setVisible(true);
         
 
-        } 
-        */
     }//GEN-LAST:event_addPhotoButtonActionPerformed
 
     /**

@@ -94,18 +94,24 @@ public class App implements Serializable{
         mainWindow.setVisible(true);
     }
     
-    public static void ShowAboutEdit(){
+    public static void showAboutEdit(){
         secondaryWindow = new AboutEdit();
         secondaryWindow.setVisible(true);
     }
-    public static void ShowNewCommentary(){
+    public static void showNewCommentary(){
         secondaryWindow = new NewCommentary();
         secondaryWindow.setVisible(true);
     }
-    public static void ShowNewPost(){
+    public static void showNewPost(){
         secondaryWindow = new NewPost();
         secondaryWindow.setVisible(true);
     }
+    
+    public static void showNewPost(User user){
+        secondaryWindow = new NewPost(user);
+        secondaryWindow.setVisible(true);
+    }
+    
     
     // getters and setters
     public static SocialNetwork getNetwork() {
