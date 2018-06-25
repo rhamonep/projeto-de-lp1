@@ -143,11 +143,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Grupos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="groupsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="solicitations">
           <Properties>
             <Property name="text" type="java.lang.String" value="Solicita&#xe7;&#xf5;es"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="solicitationsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="home">
           <Properties>
@@ -169,6 +175,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Bloqueados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blockedActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Profile">
           <Properties>
