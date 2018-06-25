@@ -14,6 +14,7 @@ public class Group implements Serializable{
 	private String name;
 	private List<User> members;
 	private List<User> memberRequests;
+        private List<User> blacklist;
         private List<User> admins;
 	private List<ImageIcon> pictures;
 	private List<Post> posts;
