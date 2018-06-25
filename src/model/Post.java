@@ -5,10 +5,11 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-public class Post extends DataModel {
+public class Post extends DataModel implements Serializable {
 	private ArrayList<ImageIcon> picture;
 	private ArrayList<Comment> comments;
 	private String description;

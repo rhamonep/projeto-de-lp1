@@ -119,11 +119,13 @@ public class ForgotenPassword extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /*
         if(App.getNetwork().changePassword(jTextField1.getText(), new String(jPasswordField1.getPassword()), new String(jPasswordField2.getPassword()))){
             this.dispose();
         } else{
             System.out.println("Deu ruim");
         }
+        */
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

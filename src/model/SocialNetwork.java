@@ -1,5 +1,6 @@
 package model;
 
+import control.App;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,9 +10,11 @@ import java.util.List;
 public class SocialNetwork implements Serializable {
     private List<User> users;
     private User currentUser;
+    private List<Group> groups; 
     
     public SocialNetwork() {
         this.users = new ArrayList();
+        this.groups = new ArrayList();
     }
     
     public boolean login(String email, String password) {
@@ -28,17 +31,6 @@ public class SocialNetwork implements Serializable {
     public void createUser(String name, String email, String password, Date dob){
         User newUser = new User(name, password, email, dob);
         this.users.add(newUser);
-    }
-    
-    public boolean changePassword(String email, String password, String confirmPassword) {
-        for(User user: users) {
-           if (user.getEmail().equals(email)){
-               user.setPassword(password);
-               return true;
-           }
-        }
-        
-        return false;
     }
     
     public User getUser(String email){
@@ -61,5 +53,13 @@ public class SocialNetwork implements Serializable {
 
     public User getCurrentUser() {
         return currentUser;
-    }    
+    }
+    
+    public List<Group> getGroups(){
+        return this.groups;
+    }
+    
+    public void addGroup(Group group){
+        this.groups.add(group);
+    }
 }
