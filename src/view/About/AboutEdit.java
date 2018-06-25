@@ -19,7 +19,8 @@ public class AboutEdit extends javax.swing.JFrame {
     public AboutEdit() {
         initComponents();
         nameField.setText(App.getNetwork().getCurrentUser().getName());
-        dateFField.setText(App.getNetwork().getCurrentUser().getStringDob());
+        dateFField.setText(App.getNetwork().getCurrentUser().getDobString());
+        addressField.setText(App.getNetwork().getCurrentUser().getAddress());
         
     }
 
