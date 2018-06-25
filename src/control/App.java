@@ -16,6 +16,7 @@ import java.io.Serializable;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.SocialNetwork;
+import model.User;
 import view.Login.Login;
 import view.Login.NewUser;
 import view.Login.ForgotenPassword;
@@ -33,6 +34,7 @@ import view.CreationWindows.NewPost;
 public class App implements Serializable{
     
     private static JFrame mainWindow;
+    private static MainView mainView;
     private static JFrame secondaryWindow;
     private static SocialNetwork network;
     
@@ -129,6 +131,11 @@ public class App implements Serializable{
 
     public static void setSecondaryWindow(JFrame secondaryWindow) {
         App.secondaryWindow = secondaryWindow;
+    }
+    
+    public static void showProfile(User user){
+        mainView = (MainView) mainWindow;
+        mainView.showProfile(user);
     }
     
     public static void saveNetwork(){

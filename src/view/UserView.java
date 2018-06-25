@@ -5,17 +5,23 @@
  */
 package view;
 
+import model.User;
+
 /**
  *
  * @author Usuario
  */
 public class UserView extends javax.swing.JPanel {
-
+    
+    private User user;
     /**
      * Creates new form ProfileView
      */
-    public UserView() {
+    public UserView(User user) {
         initComponents();
+        
+        this.user = user;
+        this.jLabel2.setText(this.user.getName());
     }
 
     /**

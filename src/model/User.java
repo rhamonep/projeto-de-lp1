@@ -10,6 +10,9 @@ public class User implements Serializable {
 	private String name;
 	private String email;
         private String password;
+        private String address;
+        private String phone;
+        private String bio;
         private ImageIcon profilePicture;
         private List<ImageIcon> pictures;
 	private Date dob;  
@@ -44,6 +47,30 @@ public class User implements Serializable {
         public void setPassword(String password) {
             this.password = password;
         }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getBio() {
+            return bio;
+        }
+
+        public void setBio(String bio) {
+            this.bio = bio;
+        }       
 
         public ImageIcon getProfilePicture() {
             return profilePicture;

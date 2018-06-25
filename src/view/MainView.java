@@ -258,6 +258,11 @@ public class MainView extends javax.swing.JFrame {
         viewPanel = new Search(str);
         mainPane.setViewportView(viewPanel);
     }
+    
+    public void showProfile(User user){
+        viewPanel = new UserView(user);
+        mainPane.setViewportView(viewPanel);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Profile;
