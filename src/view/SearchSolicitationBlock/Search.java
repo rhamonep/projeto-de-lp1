@@ -10,7 +10,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import model.User;
-import view.Feed.PostView;
 
 /**
  *
@@ -30,7 +29,7 @@ public class Search extends javax.swing.JPanel {
 
         int i = 0;
         for(User user:App.getNetwork().getUsers()){
-            if(user.getName().contains(search)){
+            if(user.getName().contains(search) && user != App.getNetwork().getCurrentUser()){
                 UserGroups panel = new UserGroups(user);
                    c.insets = new Insets(5, 5, 5, 5);
                    c.gridx = 0;
