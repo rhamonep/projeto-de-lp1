@@ -19,7 +19,8 @@ public class User implements Serializable {
         private List<Post> feed;
         private List<User> groups;
 	private List<User> friends;
-	private List<User> friendRequests;	
+	private List<User> friendRequests;
+        private List<User> blacklist;
 	
 	public User(String name, String password, String email, Date dob) {
 		this.name = name;
@@ -138,5 +139,11 @@ public class User implements Serializable {
             this.groups = groups;
         }
 
-        
+        public List<User> getBlacklist() {
+            return blacklist;
+        }
+
+        public void setBlacklist(List<User> blacklist) {
+            this.blacklist = blacklist;
+        }        
 }
