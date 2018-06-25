@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import model.User;
 import view.Feed.FeedView;
 import view.Gallery.GaleryView;
+import view.SearchSolicitationBlock.NotFound;
 import view.SearchSolicitationBlock.PanelInfo;
 import view.SearchSolicitationBlock.Search;
 /**
@@ -220,7 +221,10 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void friendsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_friendsActionPerformed
-         showFriends(App.getNetwork().getCurrentUser().getFriends());
+        if(App.getNetwork().getCurrentUser().getFriends().size()==0){
+            showNotFound();
+        } 
+        showFriends(App.getNetwork().getCurrentUser().getFriends());
     }//GEN-LAST:event_friendsActionPerformed
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
@@ -250,14 +254,23 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_searchActionPerformed
 
     private void groupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupsActionPerformed
+        if(App.getNetwork().getCurrentUser().getGroups().size()==0){
+            showNotFound();
+        }
         showGroups(App.getNetwork().getCurrentUser().getGroups());
     }//GEN-LAST:event_groupsActionPerformed
 
     private void solicitationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitationsActionPerformed
-        showGroups(App.getNetwork().getCurrentUser().getFriendRequests());
+       if(App.getNetwork().getCurrentUser().getFriendRequests().size()==0){
+            showNotFound();
+        }
+        showFriendsRequests(App.getNetwork().getCurrentUser().getFriendRequests());
     }//GEN-LAST:event_solicitationsActionPerformed
 
     private void blockedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockedActionPerformed
+        if(App.getNetwork().getCurrentUser().getBlacklist().size()==0){
+            showNotFound();
+        }
         showBlocked(App.getNetwork().getCurrentUser().getBlacklist());
     }//GEN-LAST:event_blockedActionPerformed
 
@@ -307,6 +320,10 @@ public class MainView extends javax.swing.JFrame {
     }
     public void showBlocked(List<User> array){
         viewPanel = new PanelInfo(array);
+        mainPane.setViewportView(viewPanel);
+    }
+    public void showNotFound(){
+        viewPanel = new NotFound();
         mainPane.setViewportView(viewPanel);
     }
 
