@@ -124,8 +124,8 @@ public class NewPost extends javax.swing.JFrame {
        
         p1 = new Post();
         p1.setDescription(text.getText());   
-        App.getNetwork().getCurrentUser().getFeed().add(p1);
-        
+        App.getNetwork().getCurrentUser().addPost(p1);
+        App.showFeed();
         dispose();
   
     }//GEN-LAST:event_postActionPerformed
