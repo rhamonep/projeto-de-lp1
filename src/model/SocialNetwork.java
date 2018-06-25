@@ -25,8 +25,7 @@ public class SocialNetwork implements Serializable {
         return false;
     }
     
-    public void createUser(String name, String email, String password, 
-                              String confirmPassword, Date dob){
+    public void createUser(String name, String email, String password, Date dob){
         User newUser = new User(name, password, email, dob);
         this.users.add(newUser);
     }

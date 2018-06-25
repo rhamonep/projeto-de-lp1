@@ -95,7 +95,7 @@ public class User implements Serializable {
         this.pictures.add(picture);
     }
 
-    public List getFeed() {
+    public List<Post> getFeed() {
         return feed;
     }
 

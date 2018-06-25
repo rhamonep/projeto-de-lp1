@@ -6,3 +6,4 @@ nbdist/
 .nb-gradle/
 .ser
 *.ser
+nbproject/private/private.properties
