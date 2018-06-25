@@ -70,7 +70,7 @@ public class App implements Serializable{
         }
         
         catch(IOException | ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null,"erro na leitura do arquivo: " + e);
+           network = new SocialNetwork();
         }
            
         showLoginView();

@@ -8,10 +8,12 @@ package view;
 import control.App;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
+import java.util.List;
 import javax.swing.JPanel;
 import model.User;
 import view.Feed.FeedView;
 import view.Gallery.GaleryView;
+import view.SearchSolicitationBlock.PanelInfo;
 import view.SearchSolicitationBlock.Search;
 /**
  *
@@ -69,8 +71,18 @@ public class MainView extends javax.swing.JFrame {
         });
 
         groups.setText("Grupos");
+        groups.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupsActionPerformed(evt);
+            }
+        });
 
         solicitations.setText("Solicitações");
+        solicitations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solicitationsActionPerformed(evt);
+            }
+        });
 
         home.setText("Home");
         home.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +99,11 @@ public class MainView extends javax.swing.JFrame {
         });
 
         blocked.setText("Bloqueados");
+        blocked.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blockedActionPerformed(evt);
+            }
+        });
 
         Profile.setText("Editar perfil");
         Profile.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +220,7 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void friendsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_friendsActionPerformed
-
+         showFriends(App.getNetwork().getCurrentUser().getFriends());
     }//GEN-LAST:event_friendsActionPerformed
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
@@ -231,6 +248,18 @@ public class MainView extends javax.swing.JFrame {
          showSearch(searchText.getText());
          
     }//GEN-LAST:event_searchActionPerformed
+
+    private void groupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupsActionPerformed
+        showGroups(App.getNetwork().getCurrentUser().getGroups());
+    }//GEN-LAST:event_groupsActionPerformed
+
+    private void solicitationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitationsActionPerformed
+        showGroups(App.getNetwork().getCurrentUser().getFriendRequests());
+    }//GEN-LAST:event_solicitationsActionPerformed
+
+    private void blockedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockedActionPerformed
+        showBlocked(App.getNetwork().getCurrentUser().getBlacklist());
+    }//GEN-LAST:event_blockedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,6 +290,23 @@ public class MainView extends javax.swing.JFrame {
     
     public void showProfile(User user){
         viewPanel = new UserView(user);
+        mainPane.setViewportView(viewPanel);
+    }
+     public void showFriends(List<User> array){
+        viewPanel = new PanelInfo(array);
+        mainPane.setViewportView(viewPanel);
+    }
+    
+    public void showGroups(List<User> array){
+        viewPanel = new PanelInfo(array);
+        mainPane.setViewportView(viewPanel);
+    }
+    public void showFriendsRequests(List<User> array){
+        viewPanel = new PanelInfo(array);
+        mainPane.setViewportView(viewPanel);
+    }
+    public void showBlocked(List<User> array){
+        viewPanel = new PanelInfo(array);
         mainPane.setViewportView(viewPanel);
     }
 
