@@ -21,8 +21,7 @@ public class PhotosView extends javax.swing.JPanel {
     public PhotosView(ImageIcon image) {
          initComponents();
          labelPhoto.setIcon(new ImageIcon(image.getImage().getScaledInstance(labelPhoto.getWidth(), labelPhoto.getHeight(), Image.SCALE_DEFAULT)));
-         labelPhoto.setVisible(false);
-         labelPhoto.setVisible(true);
+      
     }
   
     /**
@@ -35,28 +34,15 @@ public class PhotosView extends javax.swing.JPanel {
     private void initComponents() {
 
         labelPhoto = new javax.swing.JLabel();
-        Photos = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(153, 255, 102));
 
         labelPhoto.setText("Imagem");
 
-        javax.swing.GroupLayout PhotosLayout = new javax.swing.GroupLayout(Photos);
-        Photos.setLayout(PhotosLayout);
-        PhotosLayout.setHorizontalGroup(
-            PhotosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        PhotosLayout.setVerticalGroup(
-            PhotosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Photos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -65,15 +51,12 @@ public class PhotosView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Photos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Photos;
     private javax.swing.JLabel labelPhoto;
     // End of variables declaration//GEN-END:variables
 }

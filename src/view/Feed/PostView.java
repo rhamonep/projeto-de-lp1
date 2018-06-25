@@ -6,31 +6,39 @@
 package view.Feed;
 
 import control.App;
+import javax.swing.ImageIcon;
 import model.Post;
 import model.User;
+import view.CreationWindows.NewPost;
 
 /**
  *
- * @autho   r Usuario
+ * @autho r Usuario
  */
 public class PostView extends javax.swing.JPanel {
 
     private User user;
     private Post post;
-    
-    public PostView(Post post){
+//    private ImageIcon image = NewPost.getImage();
+
+    public PostView(Post post) {
+
         initComponents();
         this.user = App.getNetwork().getCurrentUser();
         this.post = post;
         name.setText(this.user.getName());
         text.setText(this.post.getText());
+        lblFoto.setIcon(post.getPicture());
     }
+
     public PostView(User user, Post post) {
         initComponents();
+
         this.user = user;
         this.post = post;
         name.setText(user.getName());
         text.setText(post.getText());
+        lblFoto.setIcon(post.getPicture());
     }
 
     /**
@@ -47,6 +55,7 @@ public class PostView extends javax.swing.JPanel {
         privacyButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        lblFoto = new javax.swing.JLabel();
         showCommentsButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         text = new javax.swing.JTextPane();
@@ -82,15 +91,27 @@ public class PostView extends javax.swing.JPanel {
             }
         });
 
+        lblFoto.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(193, 193, 193)
+                    .addComponent(lblFoto)
+                    .addContainerGap(193, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 36, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblFoto)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         showCommentsButton.setText("Exibir comentários");
@@ -113,7 +134,7 @@ public class PostView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Photos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 236, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(showCommentsButton))
@@ -127,7 +148,7 @@ public class PostView extends javax.swing.JPanel {
                         .addComponent(name)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(date)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                         .addComponent(privacyButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteButton)
@@ -165,10 +186,10 @@ public class PostView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void privacyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privacyButtonActionPerformed
-        if(this.post.isPublic()){
+        if (this.post.isPublic()) {
             this.post.setVisibility(false);
             this.privacyButton.setText("Tornar Público");
-        }else{
+        } else {
             this.post.setVisibility(true);
             this.privacyButton.setText("Tornar Privado");
         }
@@ -189,6 +210,7 @@ public class PostView extends javax.swing.JPanel {
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel name;
     private javax.swing.JButton privacyButton;
     private javax.swing.JButton showCommentsButton;
