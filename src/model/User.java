@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,6 +111,11 @@ public class User implements Serializable {
 	public Date getDob() {
 		return dob;
 	}
+        
+        public String getDobString(){
+            DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+            return df.format(dob);
+        }
 	
 	public void setDob(Date dob) {
 		this.dob = dob;
