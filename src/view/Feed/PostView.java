@@ -5,18 +5,32 @@
  */
 package view.Feed;
 
+import control.App;
+import model.Post;
+import model.User;
+
 /**
  *
- * @author Usuario
+ * @autho   r Usuario
  */
 public class PostView extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FeedView
-     */
-    public PostView() {
+    private User user;
+    private Post post;
+    
+    public PostView(Post post){
         initComponents();
- 
+        this.user = App.getNetwork().getCurrentUser();
+        this.post = post;
+        name.setText(this.user.getName());
+        text.setText(this.post.getText());
+    }
+    public PostView(User user, Post post) {
+        initComponents();
+        this.user = user;
+        this.post = post;
+        name.setText(user.getName());
+        text.setText(post.getText());
     }
 
     /**
@@ -28,19 +42,20 @@ public class PostView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
         Photos = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        privacyButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        showCommentsButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         text = new javax.swing.JTextPane();
+        date = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setText("Nome do Usuario");
+        name.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        name.setText("Nome do Usuario");
 
         javax.swing.GroupLayout PhotosLayout = new javax.swing.GroupLayout(Photos);
         Photos.setLayout(PhotosLayout);
@@ -53,14 +68,19 @@ public class PostView extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Publico");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        privacyButton.setText("Publico");
+        privacyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                privacyButtonActionPerformed(evt);
             }
         });
 
         jButton2.setText("Comentar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,12 +93,19 @@ public class PostView extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jButton3.setText("Exibir comentários");
+        showCommentsButton.setText("Exibir comentários");
 
-        jButton4.setText("Apagar");
+        deleteButton.setText("Apagar");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         text.setEditable(false);
         text.setBorder(null);
+
+        date.setText("Data");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,7 +116,7 @@ public class PostView extends javax.swing.JPanel {
                 .addGap(0, 236, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3))
+                .addComponent(showCommentsButton))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +124,13 @@ public class PostView extends javax.swing.JPanel {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(name)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(date)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(privacyButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(deleteButton)
                         .addGap(8, 8, 8))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -112,16 +141,18 @@ public class PostView extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
-                .addGap(43, 43, 43)
+                    .addComponent(privacyButton)
+                    .addComponent(deleteButton)
+                    .addComponent(name)
+                    .addComponent(date))
+                .addGap(32, 32, 32)
                 .addComponent(Photos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(showCommentsButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -133,19 +164,34 @@ public class PostView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void privacyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privacyButtonActionPerformed
+        if(this.post.isPublic()){
+            this.post.setVisibility(false);
+            this.privacyButton.setText("Tornar Público");
+        }else{
+            this.post.setVisibility(true);
+            this.privacyButton.setText("Tornar Privado");
+        }
+        App.showFeed();
+    }//GEN-LAST:event_privacyButtonActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        this.user.removePost(this.post);
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Photos;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel date;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel name;
+    private javax.swing.JButton privacyButton;
+    private javax.swing.JButton showCommentsButton;
     private javax.swing.JTextPane text;
     // End of variables declaration//GEN-END:variables
 }

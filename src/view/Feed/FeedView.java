@@ -20,26 +20,40 @@ import view.SearchSolicitationBlock.UserGroups;
 public class FeedView extends javax.swing.JPanel {
 
     
-    PostView p1;
+    private PostView p1;
     
     public FeedView() {
         GridBagLayout layout = new GridBagLayout(); 
         initComponents();
         postP.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
-        PostView p1;
-        //int p = App.getNetwork().user.getFeed().size();
-            
-            int i = 0;
+        
+        int i = 0;
         for(Post post:App.getNetwork().getCurrentUser().getFeed()){
-                p1 = new PostView();
-                   c.insets = new Insets(0, 0, 10, 10);
-                   c.gridx = 0;
-                   c.gridy = i;
-                   postP.add(p1, c);
-                   i++;
-                  
-             }   
+            p1 = new PostView(App.getNetwork().getCurrentUser(), post);
+            c.insets = new Insets(0, 0, 10, 10);
+            c.gridx = 0;
+            c.gridy = i;
+            postP.add(p1, c);
+            i++;      
+        }   
+    }
+    public FeedView(User user) {
+        initComponents();
+        GridBagLayout layout = new GridBagLayout(); 
+        postP.setLayout(layout);
+        GridBagConstraints c = new GridBagConstraints();
+        PostView p1;
+            
+        int i = 0;
+        for(Post post:user.getFeed()){
+            p1 = new PostView(user, post);
+            c.insets = new Insets(0, 0, 10, 10);
+            c.gridx = 0;
+            c.gridy = i;
+            postP.add(p1, c);
+            i++;
+        }
     }
 
     /**

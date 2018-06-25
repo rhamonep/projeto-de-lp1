@@ -102,6 +102,9 @@ public class User implements Serializable {
     public void addPost(Post post) {
         this.feed.add(post);
     }
+    public void removePost(Post post){
+        this.feed.remove(post);
+    }
 
     public String getEmail() {
         return email;

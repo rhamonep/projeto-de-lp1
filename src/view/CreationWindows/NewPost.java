@@ -11,8 +11,14 @@ import java.awt.GridBagLayout;
 import model.Post;
 import java.awt.Image;
 import java.awt.Insets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JTextPane;
+import model.User;
 import view.Photos.PhotosView;
 
 /**
@@ -121,42 +127,42 @@ public class NewPost extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void postActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postActionPerformed
-       
-        p1 = new Post();
-        p1.setDescription(text.getText());   
+        User user = App.getNetwork().getCurrentUser();
+        Date datePosted = new Date();
+        
+        p1 = new Post(user.getName(), this.text.getText(), datePosted); 
         App.getNetwork().getCurrentUser().addPost(p1);
         App.showFeed();
-        dispose();
+        this.dispose();
   
     }//GEN-LAST:event_postActionPerformed
 
     private void addPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPhotoActionPerformed
-
-         JFileChooser photo = new JFileChooser();
+        /*
+        JFileChooser photo = new JFileChooser();
         photo.setDialogTitle("Selecione uma foto");
         photo.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         int opc = photo.showOpenDialog(this);
         if(opc == JFileChooser.APPROVE_OPTION){
-        this.image = new ImageIcon(photo.getSelectedFile().getPath());	   
-        
-        GridBagConstraints c = new GridBagConstraints();
-        pView = new PhotosView(image);
-        Post p = new Post();
-        p.addPicture(image);
-        
-        
-        c.insets = new Insets(0, 0, 10, 0);
-        c.gridx = 0;
-        c.gridy = 0;
-        panelP.add(pView, c);
-        panelP.setVisible(false);
-        panelP.setVisible(true);
+            this.image = new ImageIcon(photo.getSelectedFile().getPath());	   
+
+            GridBagConstraints c = new GridBagConstraints();
+            pView = new PhotosView(image);
+            Post p = new Post();
+            p.addPicture(image);
+
+
+            c.insets = new Insets(0, 0, 10, 0);
+            c.gridx = 0;
+            c.gridy = 0;
+            panelP.add(pView, c);
+            panelP.setVisible(false);
+            panelP.setVisible(true);
         
 
-}
-        
-
+        } 
+        */
     }//GEN-LAST:event_addPhotoActionPerformed
 
     /**

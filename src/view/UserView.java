@@ -6,7 +6,9 @@
 package view;
 
 import control.App;
+import javax.swing.JPanel;
 import model.User;
+import view.Feed.FeedView;
 
 /**
  *
@@ -15,6 +17,7 @@ import model.User;
 public class UserView extends javax.swing.JPanel {
     
     private User user;
+    private JPanel viewPanel;
     /**
      * Creates new form ProfileView
      */
@@ -27,6 +30,13 @@ public class UserView extends javax.swing.JPanel {
         if(App.getNetwork().getCurrentUser().getFriends().contains(user)){
             jButton6.setText("Desfazer Amizade");
         }
+        
+        showFeed();
+    }
+    
+    public void showFeed(){
+        viewPanel = new FeedView(this.user);
+        userViewPanel.setViewportView(viewPanel);
     }
 
     /**
@@ -46,7 +56,7 @@ public class UserView extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        userViewPanel = new javax.swing.JScrollPane();
         jButton7 = new javax.swing.JButton();
 
         jLabel1.setText("Foto do usuario");
@@ -77,7 +87,7 @@ public class UserView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                .addComponent(userViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
@@ -113,7 +123,7 @@ public class UserView extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(jButton4)
                 .addContainerGap())
-            .addComponent(jScrollPane1)
+            .addComponent(userViewPanel)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,6 +143,6 @@ public class UserView extends javax.swing.JPanel {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane userViewPanel;
     // End of variables declaration//GEN-END:variables
 }
