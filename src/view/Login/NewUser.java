@@ -178,16 +178,18 @@ public class NewUser extends javax.swing.JFrame {
         String email = campoLogin.getText().trim();
         String password = new String(campoSenha.getPassword());
 
-        if (username.trim().equals("")) {
+        if (App.getNetwork().getUser(email) != null) {
+            lblnotification.setText("usuário ja existente");
+        } else if (username.trim().equals("")) {
             lblnotification.setText("Nome não pode ser vazio");
         } else if (email.trim().equals("")) {
             lblnotification.setText("Email não pode ser vazio");
         } else if (password.length() < 2) {
             lblnotification.setText("senha tem que ter no mínimo 2 caracteres");
-        } else if(campoData.getText().equals("  /  /    ")){
+        } else if (campoData.getText().equals("  /  /    ")) {
             lblnotification.setText("data não pode ser vazia");
         } else {
-            
+
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             Date dob = new Date();
             try {
