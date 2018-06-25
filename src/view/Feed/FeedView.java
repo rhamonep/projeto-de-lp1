@@ -9,7 +9,6 @@ import control.App;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import static jdk.nashorn.internal.objects.NativeString.search;
 import model.Post;
 import model.User;
 import view.SearchSolicitationBlock.UserGroups;
@@ -20,29 +19,28 @@ import view.SearchSolicitationBlock.UserGroups;
  */
 public class FeedView extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FeedView
-     */
+    
+    PostView p1;
+    
     public FeedView() {
         GridBagLayout layout = new GridBagLayout(); 
         initComponents();
-        post.setLayout(layout);
+        postP.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
-        
+        PostView p1;
         //int p = App.getNetwork().user.getFeed().size();
-        int i = 0;
-        for(Object post:App.getNetwork().getCurrentUser().getFeed()){
-            if(user.getName().contains(search) && user != App.getNetwork().getCurrentUser()){
-                UserGroups panel = new UserGroups(user, 0);
-                   c.insets = new Insets(5, 5, 5, 5);
+            
+            int i = 0;
+        for(Post post:App.getNetwork().getCurrentUser().getFeed()){
+                p1 = new PostView();
+                   c.insets = new Insets(0, 0, 10, 10);
                    c.gridx = 0;
                    c.gridy = i;
-                   panelUser.add(panel, c);
+                   postP.add(p1, c);
                    i++;
-                  }
-             }
-        }
-    
+                  
+             }   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,7 +52,7 @@ public class FeedView extends javax.swing.JPanel {
     private void initComponents() {
 
         newPost = new javax.swing.JButton();
-        post = new javax.swing.JPanel();
+        postP = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(51, 51, 255));
 
@@ -65,14 +63,14 @@ public class FeedView extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout postLayout = new javax.swing.GroupLayout(post);
-        post.setLayout(postLayout);
-        postLayout.setHorizontalGroup(
-            postLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout postPLayout = new javax.swing.GroupLayout(postP);
+        postP.setLayout(postPLayout);
+        postPLayout.setHorizontalGroup(
+            postPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        postLayout.setVerticalGroup(
-            postLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        postPLayout.setVerticalGroup(
+            postPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -84,7 +82,7 @@ public class FeedView extends javax.swing.JPanel {
                 .addContainerGap(323, Short.MAX_VALUE)
                 .addComponent(newPost)
                 .addContainerGap())
-            .addComponent(post, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(postP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +90,7 @@ public class FeedView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(newPost)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(post, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(postP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -104,6 +102,6 @@ public class FeedView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton newPost;
-    private javax.swing.JPanel post;
+    private javax.swing.JPanel postP;
     // End of variables declaration//GEN-END:variables
 }

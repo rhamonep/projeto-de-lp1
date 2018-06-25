@@ -26,7 +26,7 @@
               <Component id="newPost" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="post" alignment="0" max="32767" attributes="0"/>
+          <Component id="postP" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -35,7 +35,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="newPost" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="post" min="-2" max="-2" attributes="0"/>
+              <Component id="postP" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -50,7 +50,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newPostActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JPanel" name="post">
+    <Container class="javax.swing.JPanel" name="postP">
 
       <Layout>
         <DimensionLayout dim="0">
