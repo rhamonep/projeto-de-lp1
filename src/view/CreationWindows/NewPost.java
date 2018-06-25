@@ -28,14 +28,21 @@ import view.Photos.PhotosView;
 public class NewPost extends javax.swing.JFrame {
 
     private ImageIcon image;
-            Post p1;
-            PhotosView pView;
+    private User user;
             
     public NewPost() {
         initComponents();
+        
+        this.user = App.getNetwork().getCurrentUser();
         GridBagLayout layout = new GridBagLayout();
         panelP.setLayout(layout);
         
+    }
+    
+    public NewPost(User user) {
+        initComponents();
+        GridBagLayout layout = new GridBagLayout();
+        panelP.setLayout(layout);
     }
     
 
@@ -48,8 +55,8 @@ public class NewPost extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        addPhoto = new javax.swing.JButton();
-        post = new javax.swing.JButton();
+        addPhotoButton = new javax.swing.JButton();
+        publishButton = new javax.swing.JButton();
         panelP = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -58,17 +65,17 @@ public class NewPost extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        addPhoto.setText("Adicionar Fotos");
-        addPhoto.addActionListener(new java.awt.event.ActionListener() {
+        addPhotoButton.setText("Adicionar Fotos");
+        addPhotoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addPhotoActionPerformed(evt);
+                addPhotoButtonActionPerformed(evt);
             }
         });
 
-        post.setText("Publicar");
-        post.addActionListener(new java.awt.event.ActionListener() {
+        publishButton.setText("Publicar");
+        publishButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                postActionPerformed(evt);
+                publishButtonActionPerformed(evt);
             }
         });
 
@@ -103,9 +110,9 @@ public class NewPost extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                                .addComponent(addPhoto)
+                                .addComponent(addPhotoButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(post)))))
+                                .addComponent(publishButton)))))
                 .addGap(4, 4, 4))
         );
         layout.setVerticalGroup(
@@ -115,8 +122,8 @@ public class NewPost extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(addPhoto)
-                    .addComponent(post))
+                    .addComponent(addPhotoButton)
+                    .addComponent(publishButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -126,18 +133,15 @@ public class NewPost extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void postActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postActionPerformed
-        User user = App.getNetwork().getCurrentUser();
+    private void publishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publishButtonActionPerformed
         Date datePosted = new Date();
         
-        p1 = new Post(user.getName(), this.text.getText(), datePosted); 
-        App.getNetwork().getCurrentUser().addPost(p1);
-        App.showFeed();
+        Post p1 = new Post(this.user.getName(), this.text.getText(), datePosted); 
+        this.user.addPost(p1);
         this.dispose();
-  
-    }//GEN-LAST:event_postActionPerformed
+    }//GEN-LAST:event_publishButtonActionPerformed
 
-    private void addPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPhotoActionPerformed
+    private void addPhotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPhotoButtonActionPerformed
         /*
         JFileChooser photo = new JFileChooser();
         photo.setDialogTitle("Selecione uma foto");
@@ -163,7 +167,7 @@ public class NewPost extends javax.swing.JFrame {
 
         } 
         */
-    }//GEN-LAST:event_addPhotoActionPerformed
+    }//GEN-LAST:event_addPhotoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,11 +205,11 @@ public class NewPost extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addPhoto;
+    private javax.swing.JButton addPhotoButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelP;
-    private javax.swing.JButton post;
+    private javax.swing.JButton publishButton;
     private javax.swing.JTextArea text;
     // End of variables declaration//GEN-END:variables
 }

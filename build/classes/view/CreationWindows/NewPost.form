@@ -34,9 +34,9 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="114" max="32767" attributes="0"/>
-                              <Component id="addPhoto" min="-2" max="-2" attributes="0"/>
+                              <Component id="addPhotoButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="post" min="-2" max="-2" attributes="0"/>
+                              <Component id="publishButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -52,8 +52,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="post" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addPhotoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="publishButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelP" min="-2" max="-2" attributes="0"/>
@@ -63,20 +63,20 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="addPhoto">
+    <Component class="javax.swing.JButton" name="addPhotoButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Adicionar Fotos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPhotoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPhotoButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="post">
+    <Component class="javax.swing.JButton" name="publishButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Publicar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="publishButtonActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="panelP">

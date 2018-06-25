@@ -308,7 +308,6 @@ public class MainView extends javax.swing.JFrame {
     
     public void showProfile(User user){
         viewPanel = new UserView(user);
-        
         mainPane.setViewportView(viewPanel);
     }
      public void showFriends(List array){

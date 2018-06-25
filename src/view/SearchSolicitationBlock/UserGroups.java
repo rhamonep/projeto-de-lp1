@@ -23,7 +23,7 @@ public class UserGroups extends javax.swing.JPanel {
         initComponents();
         this.panelFunction = i;
         
-    switch(panelFunction){
+        switch(panelFunction){
             case 1:
                 this.user = (User) obj;
                 jLabel2.setText(this.user.getName());
