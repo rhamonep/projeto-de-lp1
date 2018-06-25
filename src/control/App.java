@@ -32,7 +32,6 @@ import view.CreationWindows.NewPost;
  * @author italo
  */
 public class App implements Serializable{
-    
     private static JFrame mainWindow;
     private static MainView mainView;
     private static JFrame secondaryWindow;
@@ -136,6 +135,11 @@ public class App implements Serializable{
     public static void showProfile(User user){
         mainView = (MainView) mainWindow;
         mainView.showProfile(user);
+    }
+    
+    public static void showFeed(){
+        mainView = (MainView) mainWindow;
+        mainView.showFeed();
     }
     
     public static void saveNetwork(){

@@ -14,8 +14,11 @@ public class NotFound extends javax.swing.JPanel {
     /**
      * Creates new form NotFound
      */
-    public NotFound() {
+    public NotFound(String str) {
         initComponents();
+        
+        str = jLabel1.getText() + str + "!";
+        jLabel1.setText(str);
     }
 
     /**
@@ -29,7 +32,7 @@ public class NotFound extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Você não tem amigos!");
+        jLabel1.setText("Você não tem ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

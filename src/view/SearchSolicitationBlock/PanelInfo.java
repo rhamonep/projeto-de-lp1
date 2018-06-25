@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.List;
+import model.Group;
 import model.User;
 
 /**
@@ -20,23 +21,34 @@ public class PanelInfo extends javax.swing.JPanel {
     /**
      * Creates new form Solicitation
      */
-    public PanelInfo(List<User> array) {
-        initComponents();
+    public PanelInfo(List array, int opt) {
         initComponents();
         GridBagLayout layout = new GridBagLayout(); 
         initComponents();
         friendsPanel.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         
-        int i = 0;
-        for(User user:array){
-                UserGroups panel = new UserGroups(user);
-                   c.insets = new Insets(5, 5, 5, 5);
-                   c.gridx = 0;
-                   c.gridy = i;
-                   friendsPanel.add(panel, c);
-                   i++;
-                  }        
+        if(opt != 3){
+            int i = 0;
+            for(Object user:array){
+                    UserGroups panel = new UserGroups((User) user, opt);
+                       c.insets = new Insets(5, 5, 5, 5);
+                       c.gridx = 0;
+                       c.gridy = i;
+                       friendsPanel.add(panel, c);
+                       i++;
+            }
+        }else {
+            int i = 0;
+            for(Object group:array){
+                    UserGroups panel = new UserGroups((Group) group, opt);
+                       c.insets = new Insets(5, 5, 5, 5);
+                       c.gridx = 0;
+                       c.gridy = i;
+                       friendsPanel.add(panel, c);
+                       i++;
+            }
+        }
     }
 
     /**

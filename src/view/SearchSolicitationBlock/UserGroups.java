@@ -6,6 +6,7 @@
 package view.SearchSolicitationBlock;
 
 import control.App;
+import model.Group;
 import model.User;
 
 /**
@@ -15,11 +16,43 @@ import model.User;
 public class UserGroups extends javax.swing.JPanel {
 
     private User user;
+    private Group group;
+    private int panelFunction; 
             
-    public UserGroups(User user) {
+    public UserGroups(Object obj, int i) {
         initComponents();
-        this.user = user;
+        this.panelFunction = i;
         
+    switch(panelFunction){
+            case 1:
+                this.user = (User) obj;
+                jLabel2.setText(this.user.getName());
+                jLabel1.setIcon(this.user.getProfilePicture());
+                jButton1.setText("Aceitar");
+                jButton2.setText("Recusar");
+                break;
+            case 2:
+                this.user = (User) obj;
+                jLabel2.setText(this.user.getName());
+                jLabel1.setIcon(this.user.getProfilePicture());
+                jButton1.setText("Desbloquear");
+                jButton2.setVisible(false);
+                jButton2.setEnabled(false);
+                break;
+            
+            case 3:
+                this.group = (Group) obj;
+                jLabel2.setText(this.group.getName());
+                jLabel1.setIcon(this.group.getProfilePicture());
+                
+            default:
+                this.user = (User) obj;
+                jLabel2.setText(this.user.getName());
+                jLabel1.setIcon(this.user.getProfilePicture());
+                jButton1.setText("Ver Perfil");
+                jButton2.setText("Desfazer Amizade");
+                break;
+        }
     }
 
     /**

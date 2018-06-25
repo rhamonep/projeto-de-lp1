@@ -30,8 +30,8 @@ public class Search extends javax.swing.JPanel {
 
         int i = 0;
         for(User user:App.getNetwork().getUsers()){
-            if(user.getName().contains(search)){
-                UserGroups panel = new UserGroups(user);
+            if(user.getName().contains(search) && user != App.getNetwork().getCurrentUser()){
+                UserGroups panel = new UserGroups(user, 0);
                    c.insets = new Insets(5, 5, 5, 5);
                    c.gridx = 0;
                    c.gridy = i;

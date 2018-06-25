@@ -5,6 +5,7 @@
  */
 package view;
 
+import control.App;
 import model.User;
 
 /**
@@ -22,6 +23,10 @@ public class UserView extends javax.swing.JPanel {
         
         this.user = user;
         this.jLabel2.setText(this.user.getName());
+        
+        if(App.getNetwork().getCurrentUser().getFriends().contains(user)){
+            jButton6.setText("Desfazer Amizade");
+        }
     }
 
     /**
@@ -54,7 +59,12 @@ public class UserView extends javax.swing.JPanel {
 
         jButton3.setText("Ver Grupos");
 
-        jButton4.setText("Desbloqueado");
+        jButton4.setText("Bloquear");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Sobre");
 
@@ -106,6 +116,11 @@ public class UserView extends javax.swing.JPanel {
             .addComponent(jScrollPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        App.getNetwork().getCurrentUser().addToBlacklist(this.user);
+        App.showFeed();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.util.List;
 import javax.swing.JPanel;
+import model.Group;
 import model.User;
 import view.Feed.FeedView;
 import view.Gallery.GaleryView;
@@ -222,7 +223,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void friendsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_friendsActionPerformed
         if(App.getNetwork().getCurrentUser().getFriends().size()==0){
-            showNotFound();
+            showNotFound("amigos");
         } 
         else
         showFriends(App.getNetwork().getCurrentUser().getFriends());
@@ -256,7 +257,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void groupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupsActionPerformed
         if(App.getNetwork().getCurrentUser().getGroups().size()==0){
-            showNotFound();
+            showNotFound("grupos");
         }
         else
             showGroups(App.getNetwork().getCurrentUser().getGroups());
@@ -264,7 +265,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void solicitationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitationsActionPerformed
        if(App.getNetwork().getCurrentUser().getFriendRequests().size()==0){
-            showNotFound();
+            showNotFound("solicitações");
         }
         else
             showFriendsRequests(App.getNetwork().getCurrentUser().getFriendRequests());
@@ -272,7 +273,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void blockedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockedActionPerformed
         if(App.getNetwork().getCurrentUser().getBlacklist().size()==0){
-            showNotFound();
+            showNotFound("usuários bloqueados");
         }
         else
             showBlocked(App.getNetwork().getCurrentUser().getBlacklist());
@@ -309,25 +310,25 @@ public class MainView extends javax.swing.JFrame {
         viewPanel = new UserView(user);
         mainPane.setViewportView(viewPanel);
     }
-     public void showFriends(List<User> array){
-        viewPanel = new PanelInfo(array);
+     public void showFriends(List array){
+        viewPanel = new PanelInfo(array, 0);
         mainPane.setViewportView(viewPanel);
     }
     
-    public void showGroups(List<User> array){
-        viewPanel = new PanelInfo(array);
+    public void showGroups(List array){
+        viewPanel = new PanelInfo(array, 3);
         mainPane.setViewportView(viewPanel);
     }
-    public void showFriendsRequests(List<User> array){
-        viewPanel = new PanelInfo(array);
+    public void showFriendsRequests(List array){
+        viewPanel = new PanelInfo(array, 1);
         mainPane.setViewportView(viewPanel);
     }
-    public void showBlocked(List<User> array){
-        viewPanel = new PanelInfo(array);
+    public void showBlocked(List array){
+        viewPanel = new PanelInfo(array, 2);
         mainPane.setViewportView(viewPanel);
     }
-    public void showNotFound(){
-        viewPanel = new NotFound();
+    public void showNotFound(String str){
+        viewPanel = new NotFound(str);
         mainPane.setViewportView(viewPanel);
     }
 

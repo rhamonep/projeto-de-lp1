@@ -12,18 +12,17 @@ import javax.swing.ImageIcon;
 
 public class Group implements Serializable{
 	private String name;
+        private ImageIcon profilePicture;
 	private List<User> members;
 	private List<User> memberRequests;
         private List<User> blacklist;
         private List<User> admins;
-	private List<ImageIcon> pictures;
 	private List<Post> posts;
         
         public Group(String name, User adm){
             this.members = new ArrayList();
             this.memberRequests = new ArrayList();
             this.admins = new ArrayList();
-            this.pictures = new ArrayList();
             this.posts = new ArrayList();
             
             this.name = name;
@@ -54,12 +53,12 @@ public class Group implements Serializable{
 		this.memberRequests.add(memberRequest);
 	}
 	
-	public List getPictures() {
-		return pictures;
+	public ImageIcon getProfilePicture() {
+		return profilePicture;
 	}
 	
-	public void addPicture(ImageIcon picture) {
-		this.pictures.add(picture);
+	public void setProfilePicture(ImageIcon picture) {
+		this.profilePicture = picture;
 	}
 	
 	public List getPosts() {

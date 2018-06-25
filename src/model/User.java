@@ -138,7 +138,9 @@ public class User implements Serializable {
     }
 
     public void addFriendRequest(User friendRequest) {
-        this.friendRequests.add(friendRequest);
+        if(!(this.friendRequests.contains(friendRequest) && this.friends.contains(friendRequest))){
+            this.friendRequests.add(friendRequest);
+        }
     }
 
     public List<User> getGroups() {
@@ -154,6 +156,8 @@ public class User implements Serializable {
     }
 
     public void addToBlacklist(User user) {
-        this.blacklist.add(user);
+        if(!(this.blacklist.contains(user))){
+            this.blacklist.add(user);
+        }
     }        
 }
