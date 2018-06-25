@@ -126,6 +126,7 @@ public class NewPost extends javax.swing.JFrame {
     private void postActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postActionPerformed
         Post p1 = new Post();
         p1.setDescription(text.getText());
+        
   
     }//GEN-LAST:event_postActionPerformed
 

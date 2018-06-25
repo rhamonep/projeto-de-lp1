@@ -9,7 +9,10 @@ import control.App;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import static jdk.nashorn.internal.objects.NativeString.search;
+import model.Post;
 import model.User;
+import view.SearchSolicitationBlock.UserGroups;
 
 /**
  *
@@ -27,14 +30,19 @@ public class FeedView extends javax.swing.JPanel {
         GridBagConstraints c = new GridBagConstraints();
         
         //int p = App.getNetwork().user.getFeed().size();
-        for(int i=0; i<10; i++){
-            PostView p1 = new PostView();    
-            c.insets = new Insets(0, 0, 10, 0);
-            c.gridx = 0;
-            c.gridy = i;
-            post.add(p1, c);
+        int i = 0;
+        for(Object post:App.getNetwork().getCurrentUser().getFeed()){
+            if(user.getName().contains(search) && user != App.getNetwork().getCurrentUser()){
+                UserGroups panel = new UserGroups(user, 0);
+                   c.insets = new Insets(5, 5, 5, 5);
+                   c.gridx = 0;
+                   c.gridy = i;
+                   panelUser.add(panel, c);
+                   i++;
+                  }
+             }
         }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
