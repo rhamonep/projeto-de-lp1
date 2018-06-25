@@ -13,3 +13,5 @@ nbproject/private/private.properties
 nbproject/private/private.properties
 bd.ser
 *.ser
+*.properties
+*.ser
