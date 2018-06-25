@@ -106,7 +106,7 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        Profile.setText("Editar perfil");
+        Profile.setText("Sobre");
         Profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ProfileActionPerformed(evt);
