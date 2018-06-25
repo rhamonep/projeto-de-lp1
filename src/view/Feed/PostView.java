@@ -29,7 +29,7 @@ public class PostView extends javax.swing.JPanel {
         initComponents();
         this.user = user;
         this.post = post;
-        name.setText(user.getName());
+        name.setText(post.getUserName());
         text.setText(post.getText());
     }
 
@@ -45,7 +45,6 @@ public class PostView extends javax.swing.JPanel {
         name = new javax.swing.JLabel();
         Photos = new javax.swing.JPanel();
         privacyButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         showCommentsButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
@@ -75,13 +74,6 @@ public class PostView extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Comentar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,7 +85,7 @@ public class PostView extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        showCommentsButton.setText("Exibir comentários");
+        showCommentsButton.setText("Comentario");
 
         deleteButton.setText("Apagar");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -113,9 +105,7 @@ public class PostView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Photos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 236, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(showCommentsButton))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -127,7 +117,7 @@ public class PostView extends javax.swing.JPanel {
                         .addComponent(name)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(date)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                         .addComponent(privacyButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteButton)
@@ -150,9 +140,7 @@ public class PostView extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addComponent(Photos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(showCommentsButton))
+                .addComponent(showCommentsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -179,15 +167,10 @@ public class PostView extends javax.swing.JPanel {
         this.user.removePost(this.post);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Photos;
     private javax.swing.JLabel date;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel name;
     private javax.swing.JButton privacyButton;

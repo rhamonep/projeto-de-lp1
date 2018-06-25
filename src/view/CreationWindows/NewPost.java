@@ -153,7 +153,6 @@ public class NewPost extends javax.swing.JFrame {
     }//GEN-LAST:event_publishButtonActionPerformed
 
     private void addPhotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPhotoButtonActionPerformed
-   
         JFileChooser photo = new JFileChooser();
         photo.setDialogTitle("Selecione uma foto");
         photo.setFileSelectionMode(JFileChooser.FILES_ONLY);

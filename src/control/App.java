@@ -91,6 +91,7 @@ public class App implements Serializable{
     
     public static void showMainView(){
         mainWindow = new MainView();
+        mainView = (MainView) mainWindow;
         mainWindow.setVisible(true);
     }
     
@@ -110,8 +111,7 @@ public class App implements Serializable{
     public static void showNewPost(User user){
         secondaryWindow = new NewPost(user);
         secondaryWindow.setVisible(true);
-    }
-    
+    }    
     
     // getters and setters
     public static SocialNetwork getNetwork() {
@@ -139,13 +139,27 @@ public class App implements Serializable{
     }
     
     public static void showProfile(User user){
-        mainView = (MainView) mainWindow;
         mainView.showProfile(user);
     }
     
     public static void showFeed(){
-        mainView = (MainView) mainWindow;
         mainView.showFeed();
+    }
+    
+    public static void showBlocked(){
+        mainView.showBlocked(network.getCurrentUser().getBlacklist());
+    }
+    
+    public static void showFriends(){
+        mainView.showFriends(network.getCurrentUser().getFriends());
+    }
+    
+    public static void showFriendRequests(){
+        mainView.showFriendsRequests(network.getCurrentUser().getFriendRequests());
+    }
+    
+    public static void showSearch(){
+        mainView.showSearch(mainView.getSearchText());
     }
     
     public static void saveNetwork(){

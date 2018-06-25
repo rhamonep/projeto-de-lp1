@@ -22,15 +22,17 @@ public class Search extends javax.swing.JPanel {
      * Creates new form SearchGroups
      */
     public Search(String search) {
+        initComponents();
+        
+        User currentUser = App.getNetwork().getCurrentUser();
         
         GridBagLayout layout = new GridBagLayout(); 
-        initComponents();
         panelUser.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
 
         int i = 0;
         for(User user:App.getNetwork().getUsers()){
-            if(user.getName().contains(search) && user != App.getNetwork().getCurrentUser()){
+            if(user.getName().contains(search) && user != currentUser && !(currentUser.isBlocked(user))){
                 UserGroups panel = new UserGroups(user, 0);
                    c.insets = new Insets(5, 5, 5, 5);
                    c.gridx = 0;

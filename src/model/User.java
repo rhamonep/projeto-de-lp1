@@ -132,12 +132,18 @@ public class User implements Serializable {
     }
 
     public void addFriend(User newFriend) {
-        this.friends.add(newFriend);
-        this.friendRequests.remove(newFriend);
+        if(this.friendRequests.contains(newFriend))
+            this.friendRequests.remove(newFriend);
+        if(!(this.friends.contains(newFriend)))
+            this.friends.add(newFriend);
     }
+        
+
     
     public void removeFriend(User user){
-        this.friends.remove(user);
+        if(this.friends.contains(user)){
+            this.friends.remove(user);
+        }
     }
 
     public List<User> getFriendRequests(){
@@ -145,13 +151,13 @@ public class User implements Serializable {
     }
 
     public void addFriendRequest(User friendRequest) {
-        if(!(this.friendRequests.contains(friendRequest) && this.friends.contains(friendRequest))){
+        if(!(this.friendRequests.contains(friendRequest) || this.friends.contains(friendRequest))){
             this.friendRequests.add(friendRequest);
         }
     }
     
     public void removeFriendRequest(User friendRequest) {
-        if(!(this.friendRequests.contains(friendRequest) && this.friends.contains(friendRequest))){
+        if(!(this.friendRequests.contains(friendRequest) || this.friends.contains(friendRequest))){
             this.friendRequests.remove(friendRequest);
         }
     }
@@ -180,6 +186,10 @@ public class User implements Serializable {
         if(!(this.blacklist.contains(user))){
             this.blacklist.add(user);
         }
+    }
+    
+    public void removeFromBlacklist(User user){
+        this.blacklist.remove(user);
     }
     
     public boolean isBlocked(User user){

@@ -30,28 +30,36 @@ public class Group implements Serializable{
         }
 
 	public String getName() {
-		return name;
+            return name;
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+            this.name = name;
 	}
 	
 	public List getMembers() {
-		return members;
+            return members;
 	}
 	
 	public void addMember(User newMember) {
-		this.members.add(newMember);
+            this.members.add(newMember);
 	}
+        
+        public void removeMember(User user){
+            this.members.remove(user);
+        }
 	
 	public List getMemberRequests() {
-		return memberRequests;
+            return memberRequests;
 	}
 
 	public void addMemberRequest(User memberRequest) {
-		this.memberRequests.add(memberRequest);
+            this.memberRequests.add(memberRequest);
 	}
+        
+        public void removeMemberRequest(User user){
+            this.memberRequests.remove(user);
+        }
         
         public boolean isInMemberRequest(User user){
             return this.memberRequests.contains(user);
@@ -59,6 +67,10 @@ public class Group implements Serializable{
         
         public boolean isMember(User user){
             return this.members.contains(user);
+        }
+        
+        public boolean isAdmin(User user){
+            return this.admins.contains(user);
         }
 	
 	public ImageIcon getProfilePicture() {

@@ -331,6 +331,10 @@ public class MainView extends javax.swing.JFrame {
         viewPanel = new NotFound(str);
         mainPane.setViewportView(viewPanel);
     }
+    
+    public String getSearchText(){
+        return searchText.getText();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Profile;

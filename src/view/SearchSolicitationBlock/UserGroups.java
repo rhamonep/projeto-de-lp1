@@ -42,14 +42,15 @@ public class UserGroups extends javax.swing.JPanel {
             
             case 3:
                 this.group = (Group) obj;
+                this.user = App.getNetwork().getCurrentUser();
                 jLabel2.setText(this.group.getName());
                 jLabel1.setIcon(this.group.getProfilePicture());
-                jButton1.setText("Ver Grupo");
+                jButton1.setText("Ver grupo");
                 
                 if(this.group.isMember(App.getNetwork().getCurrentUser())){
                     jButton2.setText("Sair do grupo");
                 } else if(this.group.isInMemberRequest(App.getNetwork().getCurrentUser())){
-                    jButton2.setText("Cancelar Solicitação");
+                    jButton2.setText("Cancelar solicitação");
                 } else {
                     jButton2.setText("Solicitar entrada");
                 }
@@ -59,12 +60,14 @@ public class UserGroups extends javax.swing.JPanel {
                 this.user = (User) obj;
                 jLabel2.setText(this.user.getName());
                 jLabel1.setIcon(this.user.getProfilePicture());
-                jButton1.setText("Ver Perfil");
+                jButton1.setText("Ver perfil");
                 if(App.getNetwork().getCurrentUser().isFriendsWith(this.user)){
-                    jButton2.setText("Desfazer Amizade");
-                } else{
-                    jButton2.setText("Solicitar Amizade");
-                }                    
+                    jButton2.setText("Desfazer amizade");
+                } else if(App.getNetwork().getCurrentUser().isInFriendRequests(this.user)){
+                    jButton2.setText("Cancelar solicitação");
+                } else {
+                    jButton2.setText("Solicitar amizade");
+                }                 
                 break;
         }
     }
@@ -132,14 +135,24 @@ public class UserGroups extends javax.swing.JPanel {
                 App.getNetwork().getCurrentUser().removeFriendRequest(this.user);
                 break;
             case 3:
-                this.group.addMemberRequest(App.getNetwork().getCurrentUser());              
+                if(this.group.isMember(App.getNetwork().getCurrentUser())){
+                    this.group.removeMember(this.user);
+                } else if(this.group.isInMemberRequest(App.getNetwork().getCurrentUser())){
+                    this.group.removeMemberRequest(this.user);
+                } else {
+                    this.group.addMemberRequest(this.user);
+                }
+                break;
             default:
                 if(App.getNetwork().getCurrentUser().isFriendsWith(this.user)){
                     App.getNetwork().getCurrentUser().removeFriend(this.user);
-                } else{
+                    this.user.removeFriend(App.getNetwork().getCurrentUser());
+                } else if(App.getNetwork().getCurrentUser().isInFriendRequests(this.user)){
+                    this.user.removeFriendRequest(App.getNetwork().getCurrentUser());
+                } else {
                     this.user.addFriendRequest(App.getNetwork().getCurrentUser());
-                }
-                  
+                    App.showSearch();
+                }  
                 break;
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -147,28 +160,21 @@ public class UserGroups extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         switch(panelFunction){
             case 1:
-                
-                jButton2.setText("Recusar");
+                App.getNetwork().getCurrentUser().addFriend(this.user);
+                this.user.addFriend(App.getNetwork().getCurrentUser());
+                App.showFriendRequests();
                 break;
             case 2:
-
-                jLabel2.setText(this.user.getName());
-                jLabel1.setIcon(this.user.getProfilePicture());
-                jButton1.setText("Desbloquear");
-                jButton2.setVisible(false);
-                jButton2.setEnabled(false);
+                App.getNetwork().getCurrentUser().removeFromBlacklist(this.user);
+                App.showBlocked();
                 break;
             
             case 3:
-                jLabel2.setText(this.group.getName());
-                jLabel1.setIcon(this.group.getProfilePicture());
-                
+                //show group view
+                System.out.println("Groups view");
+                break;
             default:
-
-                jLabel2.setText(this.user.getName());
-                jLabel1.setIcon(this.user.getProfilePicture());
-                jButton1.setText("Ver Perfil");
-                jButton2.setText("Desfazer Amizade");
+                App.showProfile(this.user);
                 break;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
