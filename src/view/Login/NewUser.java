@@ -36,15 +36,15 @@ public class NewUser extends javax.swing.JFrame {
 
         lblnotification = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        campoNome = new javax.swing.JTextField();
+        nameField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        campoLogin = new javax.swing.JTextField();
+        emailfield = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        campoSenha = new javax.swing.JPasswordField();
+        passwordField = new javax.swing.JPasswordField();
         botaoCadastro = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        campoData = new javax.swing.JFormattedTextField();
-        passConf = new javax.swing.JPasswordField();
+        dateField = new javax.swing.JFormattedTextField();
+        passConfField = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -58,9 +58,9 @@ public class NewUser extends javax.swing.JFrame {
 
         jLabel3.setText("Senha:");
 
-        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoSenhaActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
             }
         });
 
@@ -74,20 +74,20 @@ public class NewUser extends javax.swing.JFrame {
         jLabel4.setText("data de nascimento:");
 
         try {
-            campoData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            dateField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        campoData.setToolTipText("");
-        campoData.addActionListener(new java.awt.event.ActionListener() {
+        dateField.setToolTipText("");
+        dateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoDataActionPerformed(evt);
+                dateFieldActionPerformed(evt);
             }
         });
 
-        passConf.addActionListener(new java.awt.event.ActionListener() {
+        passConfField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passConfActionPerformed(evt);
+                passConfFieldActionPerformed(evt);
             }
         });
 
@@ -102,9 +102,9 @@ public class NewUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passConf, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passConfField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailfield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -116,9 +116,9 @@ public class NewUser extends javax.swing.JFrame {
                             .addComponent(lblnotification, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
-                            .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -128,24 +128,24 @@ public class NewUser extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emailfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passConf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passConfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoCadastro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblnotification, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,34 +160,44 @@ public class NewUser extends javax.swing.JFrame {
     private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
         checkLogin();
         if (checkLogin()) {
-            this.dispose();
-        }
-
-    }//GEN-LAST:event_botaoCadastroActionPerformed
-
-    private void campoDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDataActionPerformed
-
-    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
-        checkLogin();
-        if (checkLogin()) {
-            this.dispose();
-        }else{
-                  DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             Date dob = new Date();
             try {
-                dob = df.parse(campoData.getText());
+                dob = df.parse(dateField.getText());
             } catch (ParseException ex) {
                 lblnotification.setText("erro na data" + ex);
             }
-        App.getNetwork().createUser(username, email, password, password, dob);     
+            App.getNetwork().createUser(nameField.getText(), emailfield.getText(), passwordField.getText(), dob);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "erro no cadastramento!");
         }
-    }//GEN-LAST:event_campoSenhaActionPerformed
+    }//GEN-LAST:event_botaoCadastroActionPerformed
 
-    private void passConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passConfActionPerformed
+    private void dateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passConfActionPerformed
+    }//GEN-LAST:event_dateFieldActionPerformed
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        checkLogin();
+        if (checkLogin()) {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date dob = new Date();
+            try {
+                dob = df.parse(dateField.getText());
+            } catch (ParseException ex) {
+                lblnotification.setText("erro na data" + ex);
+            }
+            App.getNetwork().createUser(nameField.getText(), emailfield.getText(), passwordField.getText(), dob);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "erro no cadastramento!");
+        }
+    }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void passConfFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passConfFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passConfFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,11 +213,11 @@ public class NewUser extends javax.swing.JFrame {
 
     private boolean checkLogin() {
 
-        String username = campoNome.getText().trim();
-        String email = campoLogin.getText().trim();
-        String password = new String(campoSenha.getPassword());
-        String confPass = new String(passConf.getPassword());
-        
+        String username = nameField.getText().trim();
+        String email = emailfield.getText().trim();
+        String password = new String(passwordField.getPassword());
+        String confPass = new String(passConfField.getPassword());
+
         if (App.getNetwork().getUser(email) != null) {
             lblnotification.setText("usuário ja existente");
         } else if (username.trim().equals("")) {
@@ -216,9 +226,9 @@ public class NewUser extends javax.swing.JFrame {
             lblnotification.setText("Email não pode ser vazio");
         } else if (password.length() < 2) {
             lblnotification.setText("senha tem que ter no mínimo 2 caracteres");
-        } else if (campoData.getText().equals("  /  /    ")) {
+        } else if (dateField.getText().equals("  /  /    ")) {
             lblnotification.setText("data não pode ser vazia");
-        } else if(!confPass.equals(password) ){
+        } else if (!confPass.equals(password)) {
             lblnotification.setText("Senhas não são iguais");
         } else {
             return true;
@@ -230,16 +240,16 @@ public class NewUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastro;
-    private javax.swing.JFormattedTextField campoData;
-    private javax.swing.JTextField campoLogin;
-    private javax.swing.JTextField campoNome;
-    private javax.swing.JPasswordField campoSenha;
+    private javax.swing.JFormattedTextField dateField;
+    private javax.swing.JTextField emailfield;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblnotification;
-    private javax.swing.JPasswordField passConf;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JPasswordField passConfField;
+    private javax.swing.JPasswordField passwordField;
     // End of variables declaration//GEN-END:variables
 }
