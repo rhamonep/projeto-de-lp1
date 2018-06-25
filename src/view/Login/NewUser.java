@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +34,7 @@ public class NewUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblnotification = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -45,6 +47,8 @@ public class NewUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+
+        lblnotification.setForeground(new java.awt.Color(255, 102, 102));
 
         jLabel1.setText("Nome:");
 
@@ -87,14 +91,17 @@ public class NewUser extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(campoSenha)
-                            .addComponent(jLabel3))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoCadastro))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblnotification, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,29 +131,22 @@ public class NewUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoCadastro))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblnotification, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        Date dob = new Date();
-        String username = campoNome.getText();
-        String email = campoLogin.getText();
-        String password = new String(campoSenha.getPassword());
-        try {
-        dob = df.parse(campoData.getText());
-        } catch(ParseException e) {
-            System.out.println("Deu ruim");
-        }
-        
 
-        App.getNetwork().createUser(username, email, password, password, dob);
-        this.dispose();
+    private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
+        checkLogin();
+        if (checkLogin()) {
+            this.dispose();
+        }
+
     }//GEN-LAST:event_botaoCadastroActionPerformed
 
     private void campoDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDataActionPerformed
@@ -154,20 +154,10 @@ public class NewUser extends javax.swing.JFrame {
     }//GEN-LAST:event_campoDataActionPerformed
 
     private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        Date dob = new Date();
-        String username = campoNome.getText();
-        String email = campoLogin.getText();
-        String password = new String(campoSenha.getPassword());
-        try {
-        dob = df.parse(campoData.getText());
-        } catch(ParseException e) {
-            System.out.println("Deu ruim");
+        checkLogin();
+        if (checkLogin()) {
+            this.dispose();
         }
-        
-
-        App.getNetwork().createUser(username, email, password, password, dob);
-        this.dispose();
     }//GEN-LAST:event_campoSenhaActionPerformed
 
     /**
@@ -182,6 +172,37 @@ public class NewUser extends javax.swing.JFrame {
         });
     }
 
+    private boolean checkLogin() {
+
+        String username = campoNome.getText().trim();
+        String email = campoLogin.getText().trim();
+        String password = new String(campoSenha.getPassword());
+
+        if (username.trim().equals("")) {
+            lblnotification.setText("Nome não pode ser vazio");
+        } else if (email.trim().equals("")) {
+            lblnotification.setText("Email não pode ser vazio");
+        } else if (password.length() < 2) {
+            lblnotification.setText("senha tem que ter no mínimo 2 caracteres");
+        } else if(campoData.getText().equals("  /  /    ")){
+            lblnotification.setText("data não pode ser vazia");
+        } else {
+            
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date dob = new Date();
+            try {
+                dob = df.parse(campoData.getText());
+            } catch (ParseException ex) {
+                lblnotification.setText("erro na data" + ex);
+            }
+            App.getNetwork().createUser(username, email, password, password, dob);
+            return true;
+        }
+        return false;
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastro;
     private javax.swing.JFormattedTextField campoData;
@@ -192,5 +213,6 @@ public class NewUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblnotification;
     // End of variables declaration//GEN-END:variables
 }
