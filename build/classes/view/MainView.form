@@ -67,13 +67,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="userName" max="32767" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblprofilePicture" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="logout" alignment="0" max="32767" attributes="0"/>
@@ -84,11 +81,12 @@
                               <Component id="photos" alignment="0" pref="131" max="32767" attributes="0"/>
                               <Component id="home" alignment="0" max="32767" attributes="0"/>
                               <Component id="Profile" alignment="0" max="32767" attributes="0"/>
-                              <Component id="profilePicture" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="userName" alignment="1" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,7 +94,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="profilePicture" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Component id="lblprofilePicture" min="-2" pref="130" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="userName" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -121,10 +119,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="profilePicture">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Foto do perfil"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="lblprofilePicture">
         </Component>
         <Component class="javax.swing.JLabel" name="userName">
           <Properties>
