@@ -6,6 +6,7 @@
 package view.Feed;
 
 import control.App;
+import model.User;
 
 /**
  *
@@ -13,11 +14,14 @@ import control.App;
  */
 public class WriteCommentary extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Commentary
-     */
+    private User user;
+    
     public WriteCommentary() {
+        
         initComponents();
+        this.user = App.getNetwork().getCurrentUser();
+        
+        
     }
 
     /**
